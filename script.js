@@ -109,10 +109,13 @@ function resetGame() {
   document.getElementById("guessInput").focus();
 }
 document.addEventListener("DOMContentLoaded", function () {
-  const guessInput = document.getElementById("guessInput");
-  guessInput.addEventListener("focus", function () {
-    this.select();
-  });
+  document
+    .getElementById("guessInput")
+    .addEventListener("keypress", function (event) {
+      if (event.key === "Enter") {
+        checkGuess();
+      }
+    });
 });
 // เริ่มเกมเมื่อโหลดหน้า
 window.addEventListener("load", initializeGame);
