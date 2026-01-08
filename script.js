@@ -108,5 +108,11 @@ function resetGame() {
   document.getElementById("guessInput").value = "";
   document.getElementById("guessInput").focus();
 }
+document.addEventListener("DOMContentLoaded", function () {
+  const guessInput = document.getElementById("guessInput");
+  guessInput.addEventListener("focus", function () {
+    this.select();
+  });
+});
 // เริ่มเกมเมื่อโหลดหน้า
 window.addEventListener("load", initializeGame);
