@@ -1,4 +1,11 @@
 // filepath: script.js
+// ตัวแปรนับจํานวนครั้งที่ทาย
+let attemptCount = 0;
+// ฟังก์ชันอัปเดตจํานวนครั้ง
+function updateDisplay() {
+  const attemptsContainer = document.getElementById("attemptsContainer");
+  attemptsContainer.textContent = `ทายแล้ว: ${attemptCount} ครั้ง`;
+}
 // ตัวแปรเก็บตัวเลขลับ
 let ans = Math.floor(Math.random() * 100) + 1;
 // ฟังก์ชันตรวจสอบการทาย
@@ -7,6 +14,15 @@ function checkGuess() {
   const guessValue = parseInt(guessInput.value);
   const resultContainer = document.getElementById("resultContainer");
   // Validation: ตรวจสอบว่าใส่ตัวเลขหรือไม่
+  attemptCount++;
+  if (guessValue === secretNumber) {
+    resultContainer.innerHTML = `
+ <div class="alert alert-success" role="alert">
+ <h5>✓ ถูกต้อง!</h5>
+ <p>คุณทายถูกในครั้งที่ ${attemptCount}</p>
+ </div>
+ `;
+  }
   if (isNaN(guessValue) || guessInput.value === "") {
     resultContainer.innerHTML = `
  <div class="alert alert-danger" role="alert">
